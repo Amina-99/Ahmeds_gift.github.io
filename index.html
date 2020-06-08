@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stilovi.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+
+    <title>Puzzle</title>
+</head>
+<body>
+    <div class="cijeli">
+    <h3 class="naslov">WARNING!</h3>
+    <p class="sadržaj">It's Ahmed's birthday, so you will see too much of him.</p>
+    <div class="menu">
+        <button class="dugme1">Too much 1</button>
+        <button class="dugme2">Too much 2</button>
+        <button class="dugme3">Too much 3</button>
+    </div>
+   <div id="glavniKontejner">
+       <div id="dijelovi"></div>
+       <div id="sklopljeniDio"></div>
+   </div>
+   <div class="upravljanje">
+    <button id="mijesaj">Izmiješaj</button>
+    <button id="ispocetka">Resetuj igricu</button>
+   </div>
+   <div class="opisUradjenog">
+       <p>Prije upotrebe pažljivo se pripremiti. Za obavijesti o indikacijama, mjerama opreza i nuspojavama
+           upitajte svog jedinog farmeceuta M.A.!
+       </p>
+   </div>
+</div> 
+   <script type="text/javascript">
+    $(document).ready(function(){
+      $(".dugme1").on('click',function(){ //klikom na "dugme1" izršava se funkcija iz narednih linija
+     var red=5, kolona=5; //definisanje varijabli red i kolona
+     var dio=""; //definisanje varijable "dio"
+     for(var i=0, top=0; i<red; i++, top-=99) //petlja pocinje od prvog reda do zadnjeg, varijabla top također počinje od 0 i smanjuje je za 99px odozgo prema dole 
+     { for(var j=0,left=0; j<kolona; j++,left-=99)//izvršavanje untrašnje for petlje omogućava prolaz kroz sve kolone od 0 do 5(kako je prethodno definisano) na onovu koje se formira mreza (red*kolona=25)
+        dio+= "<div style='background-position:" + left + "px "+ top + "px;' class='pojedinacni1'></div>"; //vec definisano varijabli "dio" dodjeljujemo div sa atributima koje prima pri svakom prolazu for pelje (od 0 se smanjuje za 99 kako odozgo tako i sa lijeve strane)
+     }
+     $("#sklopljeniDio").html(dio); 
+     $("#mijesaj").click(function(){ 
+         var dio=$("#sklopljeniDio div"); 
+         dio.each(function(){ 
+             var lijevaStrana=Math.floor(Math.random()*405)+ "px"; //def. varijable "lijevaStrana" koja prima slučajne cijele vrijednosti ((od 0 do 0,99)*405) a ovo predstavlja poziciju dijelova sa lijeve strane 
+             var vrhStrana=Math.floor(Math.random()*405)+ "px"; //def. varijable "vrhStrana" prima koja prima slučajne vrijednosti kao i u prethodnom slučaju samo đto se ovo odnosi na pozicijum, odnosno udaljenosti dijelova slike u odnosu na vrh stranice
+             $(this).css({ //svim dijelovima dodjeljuje se css sa atributima
+                 position:"absolute", //pzicija:apsolutna
+                 left:lijevaStrana, //lijeva margina prima vrijednosti dobivene u izračunatoj varijabli "lijevaStrana"
+                 top:vrhStrana //top margina prima vrijednosti dobivene u izračunatoj varijabli "vrhStrana"
+             })
+             $("#dijelovi").append($(this)); 
+         });
+         var praznoPolje=""; 
+         for(var i=0;i<red;i++) 
+         {
+             for(var j=0;j<kolona;j++) 
+             {
+                 praznoPolje+= "<div style='background-image:none;' class='pojedinacni1'></div>";
+                
+             }
+         }
+         $("#sklopljeniDio").html(praznoPolje); 
+
+     });
+     $('.pojedinacni1').draggable({snap:true,snapTorance:20});
+     $("#sklopljeniDio").droppable(); 
+    });
+    $(".dugme2").on('click',function(){ 
+     var red=5, kolona=5;
+     var dio="";
+     for(var i=0, top=0; i<red; i++, top-=99)
+     { for(var j=0,left=0; j<kolona; j++,left-=99)
+        dio+= "<div style='background-position:" + left + "px "+ top + "px;' class='pojedinacni2'></div>";
+     }
+     $("#sklopljeniDio").html(dio);
+     $("#mijesaj").click(function(){
+         var dio=$("#sklopljeniDio div");
+         dio.each(function(){
+             var lijevaStrana=Math.floor(Math.random()*405)+ "px";
+             var vrhStrana=Math.floor(Math.random()*405)+ "px";
+             $(this).css({
+                 position:"absolute",
+                 left:lijevaStrana,
+                 top:vrhStrana
+             })
+             $("#dijelovi").append($(this));
+         });
+         var praznoPolje="";
+         for(var i=0;i<red;i++)
+         {
+             for(var j=0;j<kolona;j++)
+             {
+                 praznoPolje+= "<div style='background-image:none;' class='pojedinacni2'></div>";
+             }
+         }
+         $("#sklopljeniDio").html(praznoPolje);
+
+     });
+     $('.pojedinacni2').draggable({snap:true,snapTorance:20});
+     $("#sklopljeniDio").droppable();
+    });
+    $(".dugme3").on('click',function(){
+     var red=5, kolona=5;
+     var dio="";
+     for(var i=0, top=0; i<red; i++, top-=99)
+     { for(var j=0,left=0; j<kolona; j++,left-=99)
+        dio+= "<div style='background-position:" + left + "px "+ top + "px;' class='pojedinacni3'></div>";
+     }
+     $("#sklopljeniDio").html(dio);
+     $("#mijesaj").click(function(){
+         var dio=$("#sklopljeniDio div");
+         dio.each(function(){
+             var lijevaStrana=Math.floor(Math.random()*405)+ "px";
+             var vrhStrana=Math.floor(Math.random()*405)+ "px";
+             $(this).css({
+                 position:"absolute",
+                 left:lijevaStrana,
+                 top:vrhStrana
+             })
+             $("#dijelovi").append($(this));
+         });
+         var praznoPolje="";
+         for(var i=0;i<red;i++)
+         {
+             for(var j=0;j<kolona;j++)
+             {
+                 praznoPolje+= "<div style='background-image:none;' class='pojedinacni3'></div>";
+             }
+         }
+         $("#sklopljeniDio").html(praznoPolje);
+
+     });
+     $('.pojedinacni3').draggable({snap:true,snapTorance:20});
+     $("#sklopljeniDio").droppable();
+    });
+    $("#ispocetka").click(function () { 
+                history.go(0);  
+            }); 
+});
+</script>
+
+</body>
+</html>

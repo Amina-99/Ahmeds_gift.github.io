@@ -1,0 +1,103 @@
+ html
+{height: 930px;
+margin:0;
+background-image: url("https://cdn.pixabay.com/photo/2018/03/13/22/53/puzzle-3223941_960_720.jpg");
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+width: 100%;}
+
+*
+{margin: 0px;
+padding: 0px;
+box-sizing: border-box;}
+h3
+{
+    font-family: Copperplate Gothic;
+    color:rgb(13, 122, 108);
+    font-size: 40px;
+    text-align: center;
+    padding-top: 10px;
+}
+p{  color: rgb(19, 163, 144);
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+button
+{   height: 80px;
+    font-size: larger;
+    background-color:rgb(121, 128, 143);
+    border-radius: 9%;
+    cursor:pointer;
+    color:whitesmoke;
+    outline: none;
+    border:none;
+    box-shadow: rgb(17, 70, 122);
+    width: 120px;
+    margin-top: 20px;
+}
+button:active{
+    transform: translateX(6px);
+}
+button:hover
+{background-color: rgb(19, 163, 144);}
+.menu
+{display: flex;
+flex-direction: row;
+justify-content: space-evenly;}
+.upravljanje{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+#glavniKontejner{
+    margin:50px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    
+}
+#dijelovi
+{height: 500px;
+width: 500px;
+border: 1px solid grey;
+position: relative;
+text-align: center;
+}
+#sklopljeniDio{
+    height: 500px;
+    width: 500px;
+    border: 1px solid grey;
+    
+}
+.pojedinacni1{
+    width: 99px;
+    height: 99px;
+    float:left;
+    border:1px solid silver;
+    background-image: url("images/3.png");
+    background-repeat: no-repeat;   
+}
+.pojedinacni2{
+    width: 99px;
+    height: 99px;
+    float:left;
+    border:1px solid silver;
+    background-image: url("images/2.png");
+    background-repeat: no-repeat;   
+}
+.pojedinacni3{
+    width: 99px;
+    height: 99px;
+    float:left;
+    border:1px solid silver;
+    background-image: url("images/1.png");
+    background-repeat: no-repeat;   
+
+}
+.opisUradjenog{
+    padding-top: 30px;
+    font-size: 20px;
+}
